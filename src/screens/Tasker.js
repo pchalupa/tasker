@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import StudentsBar from '../components/StudentsBar';
+import StudentsBar from '../components/Student/StudentsBar';
 
 /**
  * Function displays Tasker screen.
