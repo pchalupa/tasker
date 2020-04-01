@@ -28,7 +28,7 @@ class AddTask extends React.Component {
         event.preventDefault();
         db.collection('days')
             .doc(this.state.date)
-            .set({ date: new Date(this.state.date) });
+            .set({ date: this.state.date });
         db.collection('days')
             .doc(this.state.date)
             .collection('tasks')
