@@ -10,16 +10,8 @@ import React from 'react';
  * @class
  */
 class Student extends React.Component {
-    /**
-     * Creates new instance of Students class.
-     *
-     */
-    constructor() {
-        super();
-    }
-
     render() {
-        return <>{this.props.student}</>;
+        return <div className="student-wrapper">{this.props.student}</div>;
     }
 }
 
