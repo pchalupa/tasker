@@ -1,0 +1,5 @@
+.tasker {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: 'days students';
+}
