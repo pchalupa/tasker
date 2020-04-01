@@ -3,16 +3,19 @@
  */
 
 import React from 'react';
-import StudentsBar from '../components/StudentsBar';
+import StudentsContainer from '../components/StudentsContainer';
+import DaysContainer from '../components/DaysContainer';
+import styles from '../styles/Tasker.module.scss';
 
 /**
  * Function displays Tasker screen.
  */
 function Tasker() {
     return (
-        <>
-            <StudentsBar />
-        </>
+        <div className={styles.tasker}>
+            <StudentsContainer />
+            <DaysContainer />
+        </div>
     );
 }
 
