@@ -1,13 +1,19 @@
 /**
  * @module Admin
  */
+
 import React from 'react';
+import AddTask from '../components/Form/AddTask';
 
 /**
  * Function displays Admin screen.
  */
 function Admin() {
-    return <>Administrace</>;
+    return (
+        <>
+            <AddTask />
+        </>
+    );
 }
 
 export default Admin;
