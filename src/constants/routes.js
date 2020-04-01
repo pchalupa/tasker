@@ -3,5 +3,5 @@
  */
 export const ROUTES = {
     ROOT: '/',
-    ADMIN: 'admin'
+    ADMIN: '/admin'
 };
