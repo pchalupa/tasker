@@ -12,7 +12,7 @@ import styles from '../styles/Day.module.scss';
  */
 class Day extends React.Component {
     render() {
-        return <div className={styles.dayWrapper}>{this.props.day}</div>;
+        return <div className={styles.dayWrapper}>{this.props.date}</div>;
     }
 }
 
