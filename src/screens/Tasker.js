@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import StudentsBar from '../components/Student/StudentsBar';
+import StudentsBar from '../components/StudentsBar';
 
 /**
  * Function displays Tasker screen.
@@ -11,7 +11,6 @@ import StudentsBar from '../components/Student/StudentsBar';
 function Tasker() {
     return (
         <>
-            Ukolnicek
             <StudentsBar />
         </>
     );
