@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import styles from '../styles/Student.module.scss';
 
 /**
  * Class represents student.
@@ -11,7 +12,9 @@ import React from 'react';
  */
 class Student extends React.Component {
     render() {
-        return <div className="student-wrapper">{this.props.student}</div>;
+        return (
+            <div className={styles.studentWrapper}>{this.props.student}</div>
+        );
     }
 }
 

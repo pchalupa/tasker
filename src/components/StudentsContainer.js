@@ -1,17 +1,18 @@
 /**
- * @module StudentsBar
+ * @module StudentsContainer
  */
 
 import React from 'react';
 import Student from './Student';
-import { auth, db } from '../storage/Firebase';
+import { db } from '../storage/Firebase';
+import styles from '../styles/StudentsContainer.module.scss';
 
 /**
  * Represents students bar.
  *
  * @class
  */
-class StudentsBar extends React.Component {
+class StudentsContainer extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -48,21 +49,15 @@ class StudentsBar extends React.Component {
             })
             .then(users => {
                 this.setState({ students: users });
-                console.log(this.state.students);
             });
     }
 
     render() {
         const students = this.state.students.map(student => (
-            <Student
-                student={`${student.data.name.first +
-                    ' ' +
-                    student.data.name.last}`}
-                key={student.id}
-            />
+            <Student student={`${student.data.name.first}`} key={student.id} />
         ));
-        return <div className="students-container">{students}</div>;
+        return <div className={styles.studentsContainer}>{students}</div>;
     }
 }
 
-export default StudentsBar;
+export default StudentsContainer;
