@@ -54,11 +54,17 @@ class DaysContainer extends React.Component {
     }
 
     render() {
-        const days = this.state.days.map(day => (
-            <>
-                <Day day={`${day.data.date}`} key={day.id} />
-                <TaskContainer task="test" />
-            </>
+        const days = this.state.days.map((day, index) => (
+            <div className={styles.daysWrapper} key={index}>
+                <Day
+                    date={`${day.data.date}`}
+                    key={`${'Day-' + day.id + '-' + index}`}
+                />
+                <TaskContainer
+                    date={day.data.date}
+                    key={`${'TaskContainer-' + day.id + '-' + index}`}
+                />
+            </div>
         ));
         return <div className={styles.daysContainer}>{days}</div>;
     }
