@@ -15,7 +15,7 @@ class AddTask extends React.Component {
         };
     }
 
-    handleInputChange = event => {
+    handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;
         const name = target.name;
@@ -24,18 +24,16 @@ class AddTask extends React.Component {
         });
     };
 
-    handleSubmit = event => {
+    handleSubmit = (event) => {
         event.preventDefault();
-        db.collection('days')
-            .doc(this.state.date)
-            .set({ date: this.state.date });
-        db.collection('days')
-            .doc(this.state.date)
-            .collection('tasks')
-            .add({
+        db.collection('tasks').add({
+            date: { start: this.state.date, end: this.state.date },
+            detail: {
                 subject: this.state.subject,
                 description: this.state.description
-            });
+            },
+            assign: ['fuci00']
+        });
     };
 
     render() {
