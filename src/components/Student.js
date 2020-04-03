@@ -3,7 +3,9 @@
  */
 
 import React from 'react';
-import styles from '../styles/Student.module.scss';
+import { ROUTES } from '../constants/routes';
+import { Link } from 'react-router-dom';
+import styles from '../styles/StudentWrapper.module.scss';
 
 /**
  * Class represents student.
@@ -13,7 +15,18 @@ import styles from '../styles/Student.module.scss';
 class Student extends React.Component {
     render() {
         return (
-            <div className={styles.studentWrapper}>{this.props.student}</div>
+            <div className={styles.studentWrapper}>
+                <Link
+                    to={{
+                        pathname: ROUTES.TASKS,
+                        state: {
+                            studentId: this.props.studentId
+                        }
+                    }}
+                >
+                    <div>{this.props.student}</div>
+                </Link>
+            </div>
         );
     }
 }
