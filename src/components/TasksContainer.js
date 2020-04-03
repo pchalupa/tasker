@@ -25,17 +25,17 @@ class TasksContainer extends React.Component {
     }
 
     loadTasksFromDb = () => {
-        const foo = db.collection('days').doc(this.props.date);
-        foo.collection('tasks')
+        db.collection('tasks')
+            .where('assign', 'array-contains', this.props.userId)
             .get()
-            .then(querySnapshot => {
+            .then((querySnapshot) => {
                 const tasks = [];
-                querySnapshot.forEach(doc => {
+                querySnapshot.forEach((doc) => {
                     tasks.push({ id: doc.id, data: doc.data() });
                 });
                 return tasks;
             })
-            .then(tasks => {
+            .then((tasks) => {
                 this.setState({ tasks: tasks });
             });
     };
@@ -43,7 +43,11 @@ class TasksContainer extends React.Component {
     render() {
         const tasks = this.state.tasks.map((task, index) => (
             <Task
-                task={`${task.data.subject + ' - ' + task.data.description}`}
+                task={`${
+                    task.data.detail.subject +
+                    ' - ' +
+                    task.data.detail.description
+                }`}
                 key={`${'task-' + task.id + '-' + index}`}
             />
         ));
