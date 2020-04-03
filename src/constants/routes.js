@@ -2,6 +2,7 @@
  * Router constants.
  */
 export const ROUTES = {
-    ROOT: '/',
+    STUDENTS: '/',
+    TASKS: '/tasks',
     ADMIN: '/admin'
 };
