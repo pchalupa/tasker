@@ -39,22 +39,26 @@ class StudentsContainer extends React.Component {
     loadStudentsFromDb() {
         db.collection('users')
             .get()
-            .then(querySnapshot => {
+            .then((querySnapshot) => {
                 const users = [];
 
-                querySnapshot.forEach(doc => {
+                querySnapshot.forEach((doc) => {
                     users.push({ id: doc.id, data: doc.data() });
                 });
                 return users;
             })
-            .then(users => {
+            .then((users) => {
                 this.setState({ students: users });
             });
     }
 
     render() {
-        const students = this.state.students.map(student => (
-            <Student student={`${student.data.name.first}`} key={student.id} />
+        const students = this.state.students.map((student) => (
+            <Student
+                student={student.data.name.first}
+                studentId={student.id}
+                key={student.id}
+            />
         ));
         return <div className={styles.studentsContainer}>{students}</div>;
     }
