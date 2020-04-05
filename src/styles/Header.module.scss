@@ -1,0 +1,29 @@
+@import 'Colors.scss';
+@import 'Tools.scss';
+@import 'Animations.scss';
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    margin-bottom: 6vh;
+    padding: 3vmax;
+
+    @include border-radius-bottom;
+    @include background-rainbow;
+
+    .title {
+        flex: 1;
+        align-self: center;
+        font-size: 4vmax;
+        font-weight: 700;
+        min-width: 40vw;
+        padding: 3vw 0;
+        color: $cw;
+    }
+
+    .image {
+        flex: 1;
+        max-height: 25vh;
+        min-width: 40vw;
+    }
+}

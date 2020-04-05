@@ -1,0 +1,11 @@
+@import 'Base.scss';
+
+.layout {
+    padding: 0 5vmax 5vmax 5vmax;
+
+    .header {
+        display: block;
+        height: 25vh;
+        background-color: grey;
+    }
+}

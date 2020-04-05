@@ -1,5 +1,11 @@
+@import 'Colors.scss';
+@import 'Fonts.scss';
+
 html,
 body {
     margin: 0;
     padding: 0;
+    background-color: $cbg;
+
+    @include fp;
 }

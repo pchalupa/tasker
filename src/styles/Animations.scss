@@ -1,0 +1,47 @@
+@mixin fade-in {
+    opacity: 0;
+    animation: fade-in 500ms forwards ease-in-out;
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0 !important;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+}
+
+@mixin slide-down {
+    position: relative;
+    top: -100px;
+    animation: slide-down 500ms forwards ease-in-out;
+
+    @keyframes slide-down {
+        0% {
+            top: -100px;
+        }
+        100% {
+            top: 0;
+        }
+    }
+}
+
+@mixin background-rainbow {
+    animation: background-rainbow infinite 60s ease-in-out;
+
+    @keyframes background-rainbow {
+        0% {
+            background-color: #00bdaa;
+        }
+        33% {
+            background-color: #400082;
+        }
+        66% {
+            background-color: #fe346e;
+        }
+        100% {
+            background-color: #00bdaa;
+        }
+    }
+}

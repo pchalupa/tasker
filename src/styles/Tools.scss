@@ -1,0 +1,13 @@
+@import 'Colors.scss';
+
+@mixin border-radius-bottom {
+    border-radius: 0 0 9px 9px;
+}
+
+@mixin border-radius {
+    border-radius: 9px;
+}
+
+@mixin drop-shadow {
+    box-shadow: 9px 9px 9px lighten($cb, 85);
+}
