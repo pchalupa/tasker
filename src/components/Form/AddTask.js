@@ -4,15 +4,32 @@
 
 import React from 'react';
 import { db } from '../../storage/Firebase';
+import * as firebase from 'firebase';
+import styles from '../../styles/AddTaskForm.module.scss';
 
 class AddTask extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            users: [],
             date: '',
             subject: '',
-            description: ''
+            description: '',
+            tags: ''
         };
+    }
+
+    componentDidMount() {
+        this.getUsers();
+    }
+
+    async getUsers() {
+        const querySnapshot = await db.collection('users').get();
+        const users = [];
+        querySnapshot.forEach((doc) => {
+            users.push({ id: doc.id, data: doc.data() });
+        });
+        this.setState({ users: users });
     }
 
     handleInputChange = (event) => {
@@ -20,59 +37,69 @@ class AddTask extends React.Component {
         const value = target.value;
         const name = target.name;
         this.setState({
-            [name]: value
+            [name]: name === 'tags' ? value.split(',') : value
         });
     };
 
     handleSubmit = (event) => {
         event.preventDefault();
         db.collection('tasks').add({
-            date: { start: this.state.date, end: this.state.date },
+            date: {
+                start: firebase.firestore.Timestamp.fromDate(
+                    new Date('2020-04-10')
+                ),
+                end: firebase.firestore.Timestamp.fromDate(
+                    new Date('2020-04-10')
+                )
+            },
             detail: {
                 subject: this.state.subject,
-                description: this.state.description
+                description: this.state.description,
+                tags: this.state.tags
             },
-            assign: ['fuci00']
+            assign: this.state.users.map((user) => user.id),
+            done: []
         });
+
+        alert('Úkol byl zadán!');
     };
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form className={styles.container} onSubmit={this.handleSubmit}>
                 <label>
-                    Předmět:
+                    <p>Předmět:</p>
                     <input
                         name="subject"
                         type="text"
                         placeholder="Předmět"
                         value={this.state.subject}
                         onChange={this.handleInputChange}
+                        required
                     />
                 </label>
-                <br />
                 <label>
-                    Popis:
+                    <p>Štítky:</p>
                     <input
-                        name="description"
+                        name="tags"
                         type="text"
+                        placeholder="test, zápis, ..."
+                        value={this.state.tags}
+                        onChange={this.handleInputChange}
+                    />
+                </label>
+                <label>
+                    <p>Popis:</p>
+                    <textarea
+                        rows="12"
+                        name="description"
                         placeholder="Popis"
                         value={this.state.description}
                         onChange={this.handleInputChange}
+                        required
                     />
                 </label>
-                <br />
-                <label>
-                    Datum:
-                    <input
-                        name="date"
-                        type="text"
-                        placeholder="Datum"
-                        value={this.state.date}
-                        onChange={this.handleInputChange}
-                    />
-                </label>
-                <br />
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Odeslat" />
             </form>
         );
     }
