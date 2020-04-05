@@ -5,7 +5,8 @@
 import React from 'react';
 import { ROUTES } from '../constants/routes';
 import { Link } from 'react-router-dom';
-import styles from '../styles/StudentWrapper.module.scss';
+import Avatar from './Image/Avatar';
+import styles from '../styles/Student.module.scss';
 
 /**
  * Class represents student.
@@ -15,18 +16,26 @@ import styles from '../styles/StudentWrapper.module.scss';
 class Student extends React.Component {
     render() {
         return (
-            <div className={styles.studentWrapper}>
-                <Link
-                    to={{
-                        pathname: ROUTES.TASKS,
-                        state: {
-                            studentId: this.props.studentId
-                        }
-                    }}
+            <Link
+                to={{
+                    pathname: ROUTES.TASKS,
+                    state: {
+                        studentId: this.props.studentId,
+                        studentAlias: this.props.studentAlias
+                    }
+                }}
+            >
+                <div
+                    className={styles.wrapper}
+                    style={{ animationDelay: `${this.props.index * 50}ms` }}
                 >
-                    <div>{this.props.student}</div>
-                </Link>
-            </div>
+                    <Avatar
+                        className={styles.avatar}
+                        gender={this.props.gender}
+                    />
+                    <p className={styles.title}>{this.props.student}</p>
+                </div>
+            </Link>
         );
     }
 }

@@ -3,18 +3,20 @@
  */
 
 import React from 'react';
-import StudentsContainer from '../components/StudentsContainer';
-import styles from '../styles/StudentsScreen.module.scss';
+import Students from '../components/Students';
+import Main from '../components/Title/Main';
+import styles from '../styles/Screen.module.scss';
 
 /**
  * Function displays Tasker screen.
  */
-function Students() {
+function StudentsScreen() {
     return (
-        <div className={styles.studentsScreen}>
-            <StudentsContainer />
+        <div className={styles.layout}>
+            <Main content="Úkolníček 6.A" />
+            <Students />
         </div>
     );
 }
 
-export default Students;
+export default StudentsScreen;

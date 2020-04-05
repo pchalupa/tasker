@@ -1,0 +1,10 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15vmax, 1fr));
+    grid-gap: 2.5vmax;
+    margin: 6vmax 0;
+
+    a {
+        text-decoration: none;
+    }
+}
