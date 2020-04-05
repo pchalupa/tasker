@@ -39,6 +39,12 @@ class Task extends React.Component {
                           this.props.userId
                       )
             });
+        firebase
+            .analytics()
+            .logEvent('task_state_change', {
+                taskId: this.props.taskId,
+                subject: this.props.subject
+            });
     };
 
     render() {

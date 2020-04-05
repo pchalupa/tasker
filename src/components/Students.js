@@ -4,6 +4,7 @@
 
 import React from 'react';
 import { db } from '../storage/Firebase';
+import * as firebase from 'firebase';
 import Student from './Student';
 import Ring from './Loader/Ring';
 
@@ -56,6 +57,10 @@ class Students extends React.Component {
                         studentAlias={student.data.name.alias}
                         index={index}
                         key={student.id}
+                        onClick={firebase.analytics().logEvent('user_open', {
+                            userId: student.id,
+                            student: `${student.data.name.first} ${student.data.name.last}`
+                        })}
                     />
                 ))}
             </div>
