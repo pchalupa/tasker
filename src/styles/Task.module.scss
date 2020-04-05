@@ -1,3 +1,36 @@
-.taskWrapper {
-    min-width: 150px;
+@import 'Colors.scss';
+@import 'Tools.scss';
+@import 'Animations.scss';
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: $cw;
+    padding: 1.5vmax;
+
+    @include border-radius;
+    @include drop-shadow;
+    @include fade-in;
+
+    .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-bottom: 1px solid $cs;
+        padding-bottom: 1vmax;
+
+        .title {
+            font-size: 2.5vmax;
+            font-weight: 700;
+        }
+
+        .status {
+            cursor: pointer;
+            transform: scale(1.5);
+        }
+    }
+
+    &#done {
+        background-color: $cg;
+    }
 }

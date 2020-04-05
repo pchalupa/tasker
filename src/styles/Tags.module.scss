@@ -1,0 +1,14 @@
+@import 'Colors.scss';
+
+.tagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1vmax 0;
+
+    .tag {
+        font-style: 2vmax;
+        font-style: italic;
+        color: lighten($cb, 75%);
+        padding-right: 0.5vmax;
+    }
+}
