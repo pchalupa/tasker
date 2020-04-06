@@ -49,22 +49,22 @@ class Task extends React.Component {
     render() {
         return (
             <div
-                className={styles.wrapper}
-                id={this.state.done ? styles.done : ''}
-                style={{
-                    animationDelay: `${this.props.animationDelay * 200}ms`
-                }}
+                className={ styles.wrapper }
+                id={ this.state.done ? styles.done : '' }
+                style={ {
+                    animationDelay: `${ this.props.animationDelay * 200 }ms`
+                } }
             >
-                <div className={styles.header}>
-                    <div className={styles.title}>{this.props.subject}</div>
+                <div className={ styles.header }>
+                    <div className={ styles.title }>{this.props.subject}</div>
                     <input
-                        className={styles.status}
+                        className={ styles.status }
                         type="checkbox"
-                        checked={this.state.done}
-                        onChange={this.handleCheckboxChange}
+                        checked={ this.state.done }
+                        onChange={ this.handleCheckboxChange }
                     />
                 </div>
-                <Tags tags={this.props.tags} />
+                <Tags tags={ this.props.tags } />
                 <p>{this.props.description}</p>
             </div>
         );

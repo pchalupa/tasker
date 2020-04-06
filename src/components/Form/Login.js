@@ -34,7 +34,8 @@ class Login extends React.Component {
             this.state.email,
             this.state.password
         ).catch(function (error) {
-            alert(error.message);
+            // eslint-disable-next-line no-undef
+            alert('Špatné heslo nebo e-mail!');
         });
     };
 

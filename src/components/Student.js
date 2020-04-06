@@ -17,23 +17,23 @@ class Student extends React.Component {
     render() {
         return (
             <Link
-                to={{
+                to={ {
                     pathname: ROUTES.TASKS,
                     state: {
                         studentId: this.props.studentId,
                         studentAlias: this.props.studentAlias
                     }
-                }}
+                } }
             >
                 <div
-                    className={styles.wrapper}
-                    style={{ animationDelay: `${this.props.index * 50}ms` }}
+                    className={ styles.wrapper }
+                    style={ { animationDelay: `${ this.props.index * 50 }ms` } }
                 >
                     <Avatar
-                        className={styles.avatar}
-                        gender={this.props.gender}
+                        className={ styles.avatar }
+                        gender={ this.props.gender }
                     />
-                    <p className={styles.title}>{this.props.student}</p>
+                    <p className={ styles.title }>{this.props.student}</p>
                 </div>
             </Link>
         );

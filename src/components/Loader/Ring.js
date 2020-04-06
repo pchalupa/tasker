@@ -8,9 +8,9 @@ import RingLoader from '../../assets/img/ring-loader.svg';
 function Ring() {
     return (
         <img
-            src={RingLoader}
+            src={ RingLoader }
             alt="Ring loader"
-            style={{ display: 'block', margin: '0 auto' }}
+            style={ { display: 'block', margin: '0 auto' } }
         />
     );
 }

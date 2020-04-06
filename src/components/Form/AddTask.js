@@ -62,6 +62,7 @@ class AddTask extends React.Component {
             done: []
         });
 
+        // eslint-disable-next-line no-undef
         alert('Úkol byl zadán!');
     };
 
