@@ -33,7 +33,7 @@ class Student extends React.Component {
             >
                 <div
                     className={styles.wrapper}
-                    style={{ animationDelay: `${this.props.index * 50}ms` }}
+                    style={{ animationDelay: `${ this.props.index * 50 }ms` }}
                 >
                     <Avatar
                         className={styles.avatar}
