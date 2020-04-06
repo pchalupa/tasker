@@ -3,8 +3,6 @@
  */
 
 import React from 'react';
-import firebase from 'firebase/app';
-import 'firebase/analytics';
 import { db } from '../storage/Firebase';
 import Student from './Student';
 import Ring from './Loader/Ring';
@@ -49,19 +47,15 @@ class Students extends React.Component {
         return this.state.isFetching ? (
             <Ring />
         ) : (
-            <div className={ styles.container }>
+            <div className={styles.container}>
                 {this.state.students.map((student, index) => (
                     <Student
-                        student={ student.data.name.first }
-                        gender={ student.data.gender }
-                        studentId={ student.id }
-                        studentAlias={ student.data.name.alias }
-                        index={ index }
-                        key={ student.id }
-                        onClick={ firebase.analytics().logEvent('user_open', {
-                            userId: student.id,
-                            student: `${ student.data.name.first } ${ student.data.name.last }`
-                        }) }
+                        student={student.data.name.first}
+                        gender={student.data.gender}
+                        studentId={student.id}
+                        studentAlias={student.data.name.alias}
+                        index={index}
+                        key={student.id}
                     />
                 ))}
             </div>
