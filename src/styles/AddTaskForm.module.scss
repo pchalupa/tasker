@@ -28,6 +28,23 @@
         color: $cp;
     }
 
+    .assign {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-gap: 1vmax;
+        align-items: center;
+
+        label {
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: center;
+            align-content: center;
+            height: 100%;
+            background-color: $cw;
+            @include border-radius;
+        }
+    }
+
     .editor {
         display: grid;
         grid-template-rows: 5vh 1fr;

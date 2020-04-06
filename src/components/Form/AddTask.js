@@ -14,6 +14,7 @@ class AddTask extends React.Component {
         super(props);
         this.state = {
             users: [],
+            assgin: [],
             date: '',
             subject: '',
             description: '',
@@ -68,6 +69,11 @@ class AddTask extends React.Component {
         });
     };
 
+    handleCheckboxClick = (event) => {
+        const target = event.target;
+        console.log(target);
+    };
+
     handleSubmit = (event) => {
         event.preventDefault();
         db.collection('tasks').add({
@@ -116,6 +122,20 @@ class AddTask extends React.Component {
                         onChange={this.handleInputChange}
                     />
                 </label>
+                <label>Přiřazení:</label>
+                <div className={styles.assign}>
+                    {this.state.users.map((user) => (
+                        <label key={user.id}>
+                            <span>{user.id}</span>
+                            <input
+                                type="checkbox"
+                                name={user.id}
+                                onChange={this.handleCheckboxClick}
+                                checked
+                            />
+                        </label>
+                    ))}
+                </div>
                 <label>
                     <p>Popis:</p>
                     {this.state.editor}
