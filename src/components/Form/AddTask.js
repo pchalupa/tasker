@@ -6,6 +6,7 @@ import React from 'react';
 import { db } from '../../storage/Firebase';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import pell from 'pell';
 import styles from '../../styles/AddTaskForm.module.scss';
 
 class AddTask extends React.Component {
@@ -22,6 +23,7 @@ class AddTask extends React.Component {
 
     componentDidMount() {
         this.getUsers();
+        this.editorInit();
     }
 
     async getUsers() {
@@ -32,6 +34,30 @@ class AddTask extends React.Component {
         });
         this.setState({ users: users });
     }
+
+    editorInit = () => {
+        pell.init({
+            element: document.querySelector('#wysiwyg-editor'),
+            onChange: (html) => this.setState({ description: html }),
+            defaultParagraphSeparator: 'p',
+            actions: [
+                'bold',
+                'italic',
+                'underline',
+                'heading1',
+                'heading2',
+                'olist',
+                'ulist',
+                'link'
+            ],
+            classes: {
+                actionbar: styles.actionbar,
+                button: styles.button,
+                content: styles.content,
+                selected: styles.selected
+            }
+        });
+    };
 
     handleInputChange = (event) => {
         const target = event.target;
@@ -92,14 +118,8 @@ class AddTask extends React.Component {
                 </label>
                 <label>
                     <p>Popis:</p>
-                    <textarea
-                        rows="12"
-                        name="description"
-                        placeholder="Popis"
-                        value={this.state.description}
-                        onChange={this.handleInputChange}
-                        required
-                    />
+                    {this.state.editor}
+                    <div id="wysiwyg-editor" className={styles.editor}></div>
                 </label>
                 <input type="submit" value="Odeslat" />
             </form>

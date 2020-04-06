@@ -8,15 +8,14 @@
     label {
         display: flex;
         flex-direction: column;
-        margin: 1.5vmax 0;
+        margin: 1vmax 0;
     }
 
-    input,
-    textarea,
-    div.react-date-picker__wrapper {
+    input {
         padding: 1vmax;
         font-size: 1.5vmax;
         border: 0;
+
         @include border-radius;
     }
 
@@ -27,5 +26,44 @@
     input[type='submit'] {
         cursor: pointer;
         color: $cp;
+    }
+
+    .editor {
+        display: grid;
+        grid-template-rows: 5vh 1fr;
+        padding: 1vmax;
+        font-size: 1.5vmax;
+        border: 0;
+        background-color: $cw;
+
+        @include border-radius;
+
+        .actionbar {
+            display: flex;
+            justify-content: space-between;
+            width: 50vw;
+            height: 4vh;
+
+            .button {
+                width: 5vw;
+                background-color: $cw;
+                border: 1px solid $cs;
+
+                @include border-radius;
+            }
+
+            .selected {
+                color: $cp;
+            }
+        }
+
+        .content {
+            height: 35vh;
+            border: 1px solid $cs;
+            outline: 0px solid transparent;
+            padding: 2vmax;
+
+            @include border-radius;
+        }
     }
 }
