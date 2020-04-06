@@ -19,7 +19,8 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "lint": "eslint"
+        "lint": "eslint -c .eslintrc.json src/components/**",
+        "lint:fix": "eslint -c .eslintrc.json src/components/** --fix"
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -37,7 +38,12 @@
         ]
     },
     "devDependencies": {
+        "babel-eslint": "^10.1.0",
+        "babel-loader": "^8.1.0",
         "eslint": "^6.8.0",
-        "jsdoc": "^3.6.3"
+        "eslint-loader": "^4.0.0",
+        "eslint-plugin-react": "^7.19.0",
+        "jsdoc": "^3.6.3",
+        "prettier": "^2.0.3"
     }
 }
