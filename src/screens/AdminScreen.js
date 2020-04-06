@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import * as firebase from 'firebase';
+import { auth } from '../storage/Firebase';
 import Login from '../components/Form/Login';
 import AddTask from '../components/Form/AddTask';
 import styles from '../styles/Screen.module.scss';
@@ -17,7 +17,7 @@ class Admin extends React.Component {
         this.state = { isSignedIn: false };
     }
     componentDidMount() {
-        firebase.auth().onAuthStateChanged((user) => {
+        auth.onAuthStateChanged((user) => {
             this.setState({ isSignedIn: user ? true : false });
         });
     }

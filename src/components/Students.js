@@ -3,8 +3,9 @@
  */
 
 import React from 'react';
+import firebase from 'firebase/app';
+import 'firebase/analytics';
 import { db } from '../storage/Firebase';
-import * as firebase from 'firebase';
 import Student from './Student';
 import Ring from './Loader/Ring';
 

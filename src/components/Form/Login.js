@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import * as firebase from 'firebase';
+import { auth } from '../../storage/Firebase';
 import styles from '../../styles/LoginForm.module.scss';
 
 class Login extends React.Component {
@@ -16,7 +16,7 @@ class Login extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({ currentUser: firebase.auth().currentUser });
+        this.setState({ currentUser: auth.currentUser });
     }
 
     handleInputChange = (event) => {
@@ -30,12 +30,12 @@ class Login extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        firebase
-            .auth()
-            .signInWithEmailAndPassword(this.state.email, this.state.password)
-            .catch(function (error) {
-                alert(error.message);
-            });
+        auth.signInWithEmailAndPassword(
+            this.state.email,
+            this.state.password
+        ).catch(function (error) {
+            alert(error.message);
+        });
     };
 
     render() {

@@ -3,7 +3,8 @@
  */
 
 import React from 'react';
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/analytics';
 import { db } from '../storage/Firebase';
 import Tags from './Tags';
 import styles from '../styles/Task.module.scss';
@@ -39,12 +40,10 @@ class Task extends React.Component {
                           this.props.userId
                       )
             });
-        firebase
-            .analytics()
-            .logEvent('task_state_change', {
-                taskId: this.props.taskId,
-                subject: this.props.subject
-            });
+        firebase.analytics().logEvent('task_state_change', {
+            taskId: this.props.taskId,
+            subject: this.props.subject
+        });
     };
 
     render() {

@@ -4,7 +4,8 @@
 
 import React from 'react';
 import { db } from '../../storage/Firebase';
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 import styles from '../../styles/AddTaskForm.module.scss';
 
 class AddTask extends React.Component {
