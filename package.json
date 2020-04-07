@@ -19,7 +19,7 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "deploy": "npm run buld && firebase delpoy",
+        "deploy": "react-scripts build && firebase deploy",
         "lint": "eslint -c .eslintrc.json src/components/**",
         "lint:fix": "eslint -c .eslintrc.json src/components/** --fix"
     },
