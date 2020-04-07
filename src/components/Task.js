@@ -40,10 +40,6 @@ class Task extends React.Component {
                           this.props.userId
                       )
             });
-        firebase.analytics().logEvent('task_state_change', {
-            taskId: this.props.taskId,
-            subject: this.props.subject
-        });
     };
 
     render() {
@@ -62,6 +58,13 @@ class Task extends React.Component {
                         type="checkbox"
                         checked={this.state.done}
                         onChange={this.handleCheckboxChange}
+                        onClick={() => {
+                            firebase.analytics().logEvent('task_state_change', {
+                                taskId: this.props.taskId,
+                                userId: this.props.userId,
+                                subject: this.props.subject
+                            });
+                        }}
                     />
                 </div>
                 <Tags tags={this.props.tags} />
