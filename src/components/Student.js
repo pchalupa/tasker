@@ -15,35 +15,32 @@ import styles from '../styles/Student.module.scss';
  *
  * @class
  */
-class Student extends React.Component {
-    render() {
-        return (
-            <Link
-                to={{
-                    pathname: ROUTES.TASKS,
-                    state: {
-                        studentId: this.props.studentId,
-                        studentAlias: this.props.studentAlias
-                    }
-                }}
-                onClick={firebase.analytics().logEvent('user_open', {
-                    userId: this.props.studentId,
-                    student: this.props.student
-                })}
+function Student(props) {
+    return (
+        <Link
+            to={{
+                pathname: ROUTES.TASKS,
+                state: {
+                    studentId: props.studentId,
+                    studentAlias: props.studentAlias
+                }
+            }}
+            onClick={() => {
+                firebase.analytics().logEvent('user_open', {
+                    userId: props.studentId,
+                    student: props.student
+                });
+            }}
+        >
+            <div
+                className={styles.wrapper}
+                style={{ animationDelay: `${props.index * 50}ms` }}
             >
-                <div
-                    className={styles.wrapper}
-                    style={{ animationDelay: `${ this.props.index * 50 }ms` }}
-                >
-                    <Avatar
-                        className={styles.avatar}
-                        gender={this.props.gender}
-                    />
-                    <p className={styles.title}>{this.props.student}</p>
-                </div>
-            </Link>
-        );
-    }
+                <Avatar className={styles.avatar} gender={props.gender} />
+                <p className={styles.title}>{props.student}</p>
+            </div>
+        </Link>
+    );
 }
 
 export default Student;
