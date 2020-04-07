@@ -20,7 +20,7 @@
         padding-bottom: 1vmax;
 
         .title {
-            font-size: 2.5vmax;
+            font-size: 3vh;
             font-weight: 700;
         }
 
@@ -31,22 +31,27 @@
     }
 
     .description {
-        font-size: 1.3vmax;
+        font-size: 2vh;
         font-weight: 400;
-        line-height: 2vmax;
+        line-height: 3vh;
 
         ol,
         ul {
             list-style-position: inside;
             padding: 0;
+            margin: 1vh 0;
 
             li {
-                padding: 0 0.5vmax;
+                padding: 0 0.5vw;
             }
         }
 
         b {
             font-weight: 700;
+        }
+
+        p {
+            margin: 1vh 0;
         }
     }
 
