@@ -48,7 +48,7 @@ class Task extends React.Component {
                 className={styles.wrapper}
                 id={this.state.done ? styles.done : ''}
                 style={{
-                    animationDelay: `${this.props.animationDelay * 200}ms`
+                    animationDelay: `${ this.props.animationDelay * 200 }ms`
                 }}
             >
                 <div className={styles.header}>

@@ -28,7 +28,7 @@ function Student(props) {
         >
             <div
                 className={styles.wrapper}
-                style={{ animationDelay: `${props.index * 50}ms` }}
+                style={{ animationDelay: `${ props.index * 50 }ms` }}
                 onClick={() => {
                     firebase.analytics().logEvent('user_open', {
                         userId: props.studentId,

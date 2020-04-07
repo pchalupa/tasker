@@ -10,7 +10,7 @@ function Header(props) {
         <div className={styles.wrapper}>
             <div
                 className={styles.title}
-            >{`Tohle jsou tvoje úkoly ${props.student}.`}</div>
+            >{`Tohle jsou tvoje úkoly ${ props.student }.`}</div>
             <img className={styles.image} src={props.source} alt={props.alt} />
         </div>
     );
