@@ -25,16 +25,16 @@ function Student(props) {
                     studentAlias: props.studentAlias
                 }
             }}
-            onClick={() => {
-                firebase.analytics().logEvent('user_open', {
-                    userId: props.studentId,
-                    student: props.student
-                });
-            }}
         >
             <div
                 className={styles.wrapper}
                 style={{ animationDelay: `${props.index * 50}ms` }}
+                onClick={() => {
+                    firebase.analytics().logEvent('user_open', {
+                        userId: props.studentId,
+                        student: props.student
+                    });
+                }}
             >
                 <Avatar className={styles.avatar} gender={props.gender} />
                 <p className={styles.title}>{props.student}</p>
