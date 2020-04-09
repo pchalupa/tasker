@@ -35,7 +35,9 @@ class Tasks extends React.Component {
             .then((querySnapshot) => {
                 const tasks = [];
                 querySnapshot.forEach((doc) => {
-                    tasks.push({ id: doc.id, data: doc.data() });
+                    if (doc.data().assign.includes(this.props.userId)) {
+                        tasks.push({ id: doc.id, data: doc.data() });
+                    }
                 });
                 return tasks;
             })
@@ -48,17 +50,17 @@ class Tasks extends React.Component {
         return this.state.isFetching ? (
             <Ring />
         ) : (
-            <div className={ styles.tasksContainer }>
+            <div className={styles.tasksContainer}>
                 {this.state.tasks.map((task, index) => (
                     <Task
-                        subject={ task.data.detail.subject }
-                        description={ task.data.detail.description }
-                        done={ task.data.done.includes(this.props.userId) }
-                        tags={ task.data.detail.tags }
-                        taskId={ task.id }
-                        userId={ this.props.userId }
-                        animationDelay={ index }
-                        key={ task.id }
+                        subject={task.data.detail.subject}
+                        description={task.data.detail.description}
+                        done={task.data.done.includes(this.props.userId)}
+                        tags={task.data.detail.tags}
+                        taskId={task.id}
+                        userId={this.props.userId}
+                        animationDelay={index}
+                        key={task.id}
                     />
                 ))}
             </div>
