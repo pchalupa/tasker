@@ -33,7 +33,7 @@ class AddTask extends React.Component {
         querySnapshot.forEach((doc) => {
             users.push({
                 id: doc.id,
-                name: `${doc.data().name.first} ${doc.data().name.last}`,
+                name: `${ doc.data().name.first } ${ doc.data().name.last }`,
                 assign: true
             });
         });
