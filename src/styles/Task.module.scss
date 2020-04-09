@@ -7,6 +7,7 @@
     flex-direction: column;
     background-color: $cw;
     padding: 1.5vmax;
+    transition: 250ms ease-out;
 
     @include border-radius;
     @include drop-shadow;
@@ -16,7 +17,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        border-bottom: 1px solid $cs;
+        border-bottom: 1px solid rgba($cb, 0.15);
         padding-bottom: 1vmax;
 
         .title {
@@ -56,6 +57,9 @@
     }
 
     &#done {
-        background-color: $cg;
+        color: rgba($cb, 0.75);
+        background-color: $cgreen;
+        box-shadow: unset;
+        transition: 250ms ease-in;
     }
 }
