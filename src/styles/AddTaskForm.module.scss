@@ -34,14 +34,19 @@
         grid-gap: 1vmax;
         align-items: center;
 
-        label {
-            flex-wrap: wrap;
-            flex-direction: row;
-            justify-content: center;
-            align-content: center;
-            height: 100%;
+        button {
+            height: 5vh;
             background-color: $cw;
+            color: $cb;
+            border: 0;
+            transition: 150ms ease-in;
             @include border-radius;
+
+            &#selected {
+                background-color: $cp;
+                color: $cw;
+                transition: 150ms ease-out;
+            }
         }
     }
 

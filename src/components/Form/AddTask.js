@@ -31,7 +31,11 @@ class AddTask extends React.Component {
         const querySnapshot = await db.collection('users').get();
         const users = [];
         querySnapshot.forEach((doc) => {
-            users.push({ id: doc.id, data: doc.data() });
+            users.push({
+                id: doc.id,
+                name: `${doc.data().name.first} ${doc.data().name.last}`,
+                assign: true
+            });
         });
         this.setState({ users: users });
     }
@@ -69,13 +73,25 @@ class AddTask extends React.Component {
         });
     };
 
-    handleCheckboxClick = (event) => {
-        const target = event.target;
-        console.log(target);
+    handleSetAssign = (event) => {
+        event.preventDefault();
+        const users = this.state.users;
+        users.forEach((user) => {
+            if (user.id === event.target.name) {
+                user.assign = !user.assign;
+            }
+        });
+        this.setState({ users: users });
     };
 
     handleSubmit = (event) => {
         event.preventDefault();
+        const assign = [];
+        this.state.users.forEach((user) => {
+            if (user.assign) {
+                assign.push(user.id);
+            }
+        });
         db.collection('tasks').add({
             date: {
                 start: firebase.firestore.Timestamp.fromDate(
@@ -90,7 +106,7 @@ class AddTask extends React.Component {
                 description: this.state.description,
                 tags: this.state.tags
             },
-            assign: this.state.users.map((user) => user.id),
+            assign: assign,
             done: []
         });
 
@@ -125,15 +141,16 @@ class AddTask extends React.Component {
                 <label>Přiřazení:</label>
                 <div className={styles.assign}>
                     {this.state.users.map((user) => (
-                        <label key={user.id}>
-                            <span>{user.id}</span>
-                            <input
-                                type="checkbox"
-                                name={user.id}
-                                onChange={this.handleCheckboxClick}
-                                checked
-                            />
-                        </label>
+                        <button
+                            type="button"
+                            name={user.id}
+                            className={styles.user}
+                            id={user.assign ? styles.selected : ''}
+                            onClick={this.handleSetAssign}
+                            key={user.id}
+                        >
+                            {user.name}
+                        </button>
                     ))}
                 </div>
                 <label>
