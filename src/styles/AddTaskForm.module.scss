@@ -25,7 +25,7 @@
 
     input[type='submit'] {
         cursor: pointer;
-        color: $cp;
+        color: $cprimary;
     }
 
     .assign {
@@ -43,7 +43,7 @@
             @include border-radius;
 
             &#selected {
-                background-color: $cp;
+                background-color: $cprimary;
                 color: $cw;
                 transition: 150ms ease-out;
             }
@@ -69,19 +69,19 @@
             .button {
                 width: 5vw;
                 background-color: $cw;
-                border: 1px solid $cs;
+                border: 1px solid rgba($cb, 0.15);
 
                 @include border-radius;
             }
 
             .selected {
-                color: $cp;
+                color: $cprimary;
             }
         }
 
         .content {
             height: 35vh;
-            border: 1px solid $cs;
+            border: 1px solid rgba($cb, 0.15);
             outline: 0px solid transparent;
             padding: 2vmax;
 
