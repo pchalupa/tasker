@@ -3,8 +3,7 @@
  */
 
 import React from 'react';
-import { db } from '../../storage/Firebase';
-import firebase from 'firebase/app';
+import { base, db } from '../../storage/Firebase';
 import 'firebase/firestore';
 import pell from 'pell';
 import styles from '../../styles/AddTaskForm.module.scss';
@@ -33,7 +32,7 @@ class AddTask extends React.Component {
         querySnapshot.forEach((doc) => {
             users.push({
                 id: doc.id,
-                name: `${ doc.data().name.first } ${ doc.data().name.last }`,
+                name: `${doc.data().name.first} ${doc.data().name.last}`,
                 assign: true
             });
         });
@@ -94,12 +93,10 @@ class AddTask extends React.Component {
         });
         db.collection('tasks').add({
             date: {
-                start: firebase.firestore.Timestamp.fromDate(
+                start: base.firestore.Timestamp.fromDate(
                     new Date('2020-04-10')
                 ),
-                end: firebase.firestore.Timestamp.fromDate(
-                    new Date('2020-04-10')
-                )
+                end: base.firestore.Timestamp.fromDate(new Date('2020-04-10'))
             },
             detail: {
                 subject: this.state.subject,
