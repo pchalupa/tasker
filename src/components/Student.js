@@ -3,8 +3,7 @@
  */
 
 import React from 'react';
-import firebase from 'firebase/app';
-import 'firebase/analytics';
+import { analytics } from '../storage/Firebase';
 import { ROUTES } from '../constants/routes';
 import { Link } from 'react-router-dom';
 import Avatar from './Image/Avatar';
@@ -28,9 +27,9 @@ function Student(props) {
         >
             <div
                 className={styles.wrapper}
-                style={{ animationDelay: `${ props.index * 50 }ms` }}
+                style={{ animationDelay: `${props.index * 50}ms` }}
                 onClick={() => {
-                    firebase.analytics().logEvent('user_open', {
+                    analytics.logEvent('user_open', {
                         userId: props.studentId,
                         student: props.student
                     });
