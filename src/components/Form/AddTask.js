@@ -3,9 +3,10 @@
  */
 
 import React from 'react';
+import pell from 'pell';
 import { base, db } from '../../storage/Firebase';
 import 'firebase/firestore';
-import pell from 'pell';
+import getCurrentWeek from '../../tools/Helper';
 import styles from '../../styles/AddTaskForm.module.scss';
 
 class AddTask extends React.Component {
@@ -13,11 +14,10 @@ class AddTask extends React.Component {
         super(props);
         this.state = {
             users: [],
-            assgin: [],
-            date: '',
             subject: '',
             description: '',
-            tags: ''
+            tags: '',
+            currentWeek: getCurrentWeek()
         };
     }
 
@@ -32,7 +32,7 @@ class AddTask extends React.Component {
         querySnapshot.forEach((doc) => {
             users.push({
                 id: doc.id,
-                name: `${doc.data().name.first} ${doc.data().name.last}`,
+                name: `${ doc.data().name.first } ${ doc.data().name.last }`,
                 assign: true
             });
         });
@@ -91,12 +91,16 @@ class AddTask extends React.Component {
                 assign.push(user.id);
             }
         });
-        db.collection('tasks').add({
+        db.collection(
+            process.env.NODE_ENV === 'production' ? 'tasks' : 'tasks_dev'
+        ).add({
             date: {
                 start: base.firestore.Timestamp.fromDate(
-                    new Date('2020-04-10')
+                    this.state.currentWeek.start
                 ),
-                end: base.firestore.Timestamp.fromDate(new Date('2020-04-10'))
+                end: base.firestore.Timestamp.fromDate(
+                    this.state.currentWeek.end
+                )
             },
             detail: {
                 subject: this.state.subject,
