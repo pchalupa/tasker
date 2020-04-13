@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { auth } from '../../storage/Firebase';
-import styles from '../../styles/LoginForm.module.scss';
+import styles from '../../styles/form/LoginForm.module.scss';
 
 class Login extends React.Component {
     constructor(props) {

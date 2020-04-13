@@ -1,6 +1,6 @@
-@import 'Animations.scss';
-@import 'Colors.scss';
-@import 'Tools.scss';
+@import './global/Animations.scss';
+@import './global/Colors.scss';
+@import './global/Tools.scss';
 
 .wrapper {
     display: flex;

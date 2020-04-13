@@ -1,6 +1,6 @@
-@import 'Colors.scss';
-@import 'Tools.scss';
-@import 'Animations.scss';
+@import '../Global/Colors.scss';
+@import '../Global/Tools.scss';
+@import '../Global/Animations.scss';
 
 .container {
     display: flex;
@@ -24,5 +24,11 @@
         flex: 1;
         max-height: 25vh;
         min-width: 40vw;
+    }
+
+    @media only screen and (max-device-width: 475px) {
+        .image {
+            display: none;
+        }
     }
 }

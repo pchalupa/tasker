@@ -7,7 +7,7 @@ import pell from 'pell';
 import { base, db } from '../../storage/Firebase';
 import 'firebase/firestore';
 import getCurrentWeek from '../../tools/Helper';
-import styles from '../../styles/AddTaskForm.module.scss';
+import styles from '../../styles/form/AddTaskForm.module.scss';
 
 class AddTask extends React.Component {
     constructor(props) {
@@ -32,7 +32,7 @@ class AddTask extends React.Component {
         querySnapshot.forEach((doc) => {
             users.push({
                 id: doc.id,
-                name: `${ doc.data().name.first } ${ doc.data().name.last }`,
+                name: `${doc.data().name.first} ${doc.data().name.last}`,
                 assign: true
             });
         });
