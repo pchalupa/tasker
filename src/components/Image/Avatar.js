@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import styles from '../../styles/image/Avatar.module.scss';
+import styles from '../../styles/Image/Avatar.module.scss';
 import F_1 from '../../assets/img/avatars/female/1.svg';
 import F_2 from '../../assets/img/avatars/female/2.svg';
 import F_3 from '../../assets/img/avatars/female/3.svg';

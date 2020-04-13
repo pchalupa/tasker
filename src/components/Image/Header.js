@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import styles from '../../styles/image/Header.module.scss';
+import styles from '../../styles/Image/Header.module.scss';
 
 function Header(props) {
     return (
