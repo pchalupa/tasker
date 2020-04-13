@@ -6,7 +6,7 @@ import React from 'react';
 import { auth } from '../storage/Firebase';
 import Login from '../components/Form/Login';
 import AddTask from '../components/Form/AddTask';
-import styles from '../styles/Screen.module.scss';
+import styles from '../styles/Screen/Screen.module.scss';
 
 /**
  * Function displays Admin screen.

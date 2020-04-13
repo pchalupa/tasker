@@ -5,13 +5,19 @@
 import React from 'react';
 import Tasks from '../components/Tasks';
 import Header from '../components/Image/Header';
-import styles from '../styles/Screen.module.scss';
+import Weeks from '../components/Filter/Weeks';
+import getCurrentWeek from '../tools/Helper';
+import styles from '../styles/Screen/Screen.module.scss';
 import image from '../assets/img/header.svg';
 
 /**
  * Function displays Tasker screen.
  */
 class TasksScreen extends React.Component {
+    constructor() {
+        super();
+        this.state = { timePeriod: getCurrentWeek() };
+    }
     componentDidMount() {
         if (
             !(
@@ -24,6 +30,10 @@ class TasksScreen extends React.Component {
         }
     }
 
+    handleTimePeriodChange = (timePeriod) => {
+        this.setState({ timePeriod: timePeriod });
+    };
+
     render() {
         return this.props.location.state ? (
             <div className={styles.layout}>
@@ -32,7 +42,11 @@ class TasksScreen extends React.Component {
                     alt=""
                     student={this.props.location.state.studentAlias}
                 />
-                <Tasks userId={this.props.location.state.studentId} />
+                <Weeks timePeriod={this.handleTimePeriodChange} />
+                <Tasks
+                    userId={this.props.location.state.studentId}
+                    timePeriod={this.state.timePeriod}
+                />
             </div>
         ) : (
             <></>

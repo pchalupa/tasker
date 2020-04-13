@@ -5,7 +5,7 @@
 import React from 'react';
 import Students from '../components/Students';
 import Main from '../components/Title/Main';
-import styles from '../styles/Screen.module.scss';
+import styles from '../styles/Screen/Screen.module.scss';
 
 /**
  * Function displays Tasker screen.
