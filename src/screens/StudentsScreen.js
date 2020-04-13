@@ -2,16 +2,17 @@
  * @module Students
  */
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import Students from '../components/Students';
 import Main from '../components/Title/Main';
-import { messaging } from '../storage/Firebase';
+//import { messaging } from '../storage/Firebase';
 import styles from '../styles/Screen/Screen.module.scss';
 
 /**
  * Function displays Tasker screen.
  */
 function StudentsScreen() {
+    /*
     useEffect(() => {
         messaging
             .requestPermission()
@@ -25,6 +26,7 @@ function StudentsScreen() {
             console.log(message)
         );
     });
+	*/
     return (
         <div className={styles.layout}>
             <Main content="Úkolníček 6.A" />

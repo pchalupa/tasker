@@ -12,6 +12,7 @@
         cursor: pointer;
         background-color: $cw;
         border: 0;
+        outline: 0;
         transition: 100ms ease-out;
         @include drop-shadow;
         @include border-radius;
