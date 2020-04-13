@@ -13,8 +13,8 @@ class Weeks extends React.Component {
     constructor() {
         super();
         this.state = { selected: '' };
-        this.currentWeek = React.createRef();
-        this.previosWeek = React.createRef();
+        this.currentWeek = createRef();
+        this.previosWeek = createRef();
     }
 
     componentDidMount() {
