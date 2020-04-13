@@ -1,0 +1,26 @@
+@import '../Colors.scss';
+@import '../Tools.scss';
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr));
+    grid-gap: 2.5vw;
+    grid-template-rows: 5vh;
+    margin: 3.5vh 0;
+
+    button {
+        cursor: pointer;
+        background-color: $cw;
+        border: 0;
+        transition: 100ms ease-out;
+        @include drop-shadow;
+        @include border-radius;
+
+        &#selected {
+            color: $cw;
+            background-color: $cprimary;
+            box-shadow: unset;
+            transition: 100ms ease-in;
+        }
+    }
+}
