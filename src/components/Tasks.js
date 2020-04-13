@@ -14,8 +14,8 @@ import styles from '../styles/Tasks.module.scss';
  * @class
  */
 class Tasks extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             tasks: [],
             isFetching: true
@@ -26,16 +26,29 @@ class Tasks extends React.Component {
         this.loadTasksFromDb();
     }
 
-    loadTasksFromDb = () => {
-        const tasksRef = db.collection('tasks');
-        tasksRef.where('assign', 'array-contains', this.props.userId);
-        // TODO: tasksRef.where('date.end', '>', '2019-04-05');
-        tasksRef
+    componentDidUpdate(prevProps) {
+        if (prevProps.timePeriod !== this.props.timePeriod) {
+            this.loadTasksFromDb();
+        }
+    }
+
+    loadTasksFromDb = (
+        timePeriod = {
+            start: this.props.timePeriod.start,
+            end: this.props.timePeriod.end
+        }
+    ) => {
+        this.setState({ isFetching: true });
+        const tasks = [];
+        db.collection(
+            process.env.NODE_ENV === 'production' ? 'tasks' : 'tasks_dev'
+        )
+            .where('date.start', '>=', timePeriod.start)
+            .where('assign', 'array-contains', this.props.userId)
             .get()
             .then((querySnapshot) => {
-                const tasks = [];
                 querySnapshot.forEach((doc) => {
-                    if (doc.data().assign.includes(this.props.userId)) {
+                    if (doc.data().date.end.toDate() <= timePeriod.end) {
                         tasks.push({ id: doc.id, data: doc.data() });
                     }
                 });
@@ -43,14 +56,19 @@ class Tasks extends React.Component {
             })
             .then((tasks) => {
                 this.setState({ tasks: tasks, isFetching: false });
+            })
+            .catch((e) => {
+                console.log(e);
             });
+
+        return tasks;
     };
 
     render() {
         return this.state.isFetching ? (
             <Ring />
         ) : (
-            <div className={styles.tasksContainer}>
+            <div className={styles.container}>
                 {this.state.tasks.map((task, index) => (
                     <Task
                         subject={task.data.detail.subject}
