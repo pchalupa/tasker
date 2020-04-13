@@ -13,9 +13,14 @@ import styles from '../styles/Screen/Screen.module.scss';
  */
 function StudentsScreen() {
     useEffect(() => {
-        messaging.requestPermission().catch(function (err) {
-            console.log('Unable to get permission to notify.', err);
-        });
+        messaging
+            .requestPermission()
+            .then(async function () {
+                const token = await messaging.getToken();
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
         navigator.serviceWorker.addEventListener('message', (message) =>
             console.log(message)
         );

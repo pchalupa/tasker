@@ -1,16 +1,15 @@
-export function register(config) {
+import { messaging } from './storage/Firebase';
+
+export function register() {
     const swUrl = `${process.env.PUBLIC_URL}/firebase-messaging-sw.js`;
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker
             .register(swUrl)
             .then(function (registration) {
-                console.log(
-                    'Registration successful, scope is:',
-                    registration.scope
-                );
+                messaging.useServiceWorker(registration);
             })
             .catch(function (err) {
-                console.log('Service worker registration failed, error:', err);
+                console.log(err);
             });
     }
 }

@@ -26,6 +26,5 @@ messaging.setBackgroundMessageHandler(function (payload) {
 });
 
 self.addEventListener('notificationclick', function (event) {
-    // do what you want
-    // ...
+    return client.navigate('https://tasker-926bd.firebaseapp.com/');
 });
