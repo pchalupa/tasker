@@ -1,18 +1,16 @@
-import firebase from 'firebase/app';
-import 'firebase/firebase-messaging';
-
 export function register(config) {
-    const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+    const swUrl = `${process.env.PUBLIC_URL}/firebase-messaging-sw.js`;
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker
             .register(swUrl)
             .then(function (registration) {
-                firebase.messaging().useServiceWorker(registration);
+                console.log(
+                    'Registration successful, scope is:',
+                    registration.scope
+                );
             })
             .catch(function (err) {
-                console.log(
-                    'Whoops. Service worker registration failed, error:' + err
-                );
+                console.log('Service worker registration failed, error:', err);
             });
     }
 }
@@ -28,16 +26,3 @@ export function unregister() {
             });
     }
 }
-
-export const askForPermissioToReceiveNotifications = async () => {
-    try {
-        const messaging = firebase.messaging();
-        await messaging.requestPermission();
-        const token = await messaging.getToken();
-        console.log('token do usuário:', token);
-
-        return token;
-    } catch (error) {
-        console.error(error);
-    }
-};

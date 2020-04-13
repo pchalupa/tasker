@@ -44,7 +44,7 @@ class Task extends React.Component {
                 className={styles.wrapper}
                 id={this.state.done ? styles.done : ''}
                 style={{
-                    animationDelay: `${ this.props.animationDelay * 200 }ms`
+                    animationDelay: `${this.props.animationDelay * 200}ms`
                 }}
             >
                 <div className={styles.header}>
@@ -57,7 +57,6 @@ class Task extends React.Component {
                         onClick={() => {
                             analytics.logEvent('task_state_change', {
                                 taskId: this.props.taskId,
-                                userId: this.props.userId,
                                 subject: this.props.subject
                             });
                         }}
