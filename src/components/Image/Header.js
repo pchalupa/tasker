@@ -7,7 +7,7 @@ import styles from '../../styles/Header.module.scss';
 
 function Header(props) {
     return (
-        <div className={styles.wrapper}>
+        <div className={styles.container}>
             <div
                 className={styles.title}
             >{`Tohle jsou tvoje úkoly ${ props.student }.`}</div>
