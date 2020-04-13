@@ -10,13 +10,13 @@ import Ring from './Loader/Ring';
 import styles from '../styles/Students.module.scss';
 
 /**
- * Represents students bar.
+ * Represents students.
  *
  * @class
  */
 class Students extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             students: [],
             isFetching: true
@@ -32,7 +32,6 @@ class Students extends React.Component {
             .get()
             .then((querySnapshot) => {
                 const users = [];
-
                 querySnapshot.forEach((doc) => {
                     users.push({ id: doc.id, data: doc.data() });
                 });

@@ -9,8 +9,8 @@ function Tags(props) {
     return (
         <div className={styles.container}>
             {props.tags &&
-                props.tags.map((tag, index) => (
-                    <span className={styles.tag} key={index}>{`#${ tag }`}</span>
+                props.tags.map((tag) => (
+                    <span className={styles.tag} key={tag}>{`#${tag}`}</span>
                 ))}
         </div>
     );

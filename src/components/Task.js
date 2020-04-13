@@ -8,13 +8,13 @@ import Tags from './Tags';
 import styles from '../styles/Task.module.scss';
 
 /**
- * Class represents student.
+ * Represents task.
  *
  * @class
  */
 class Task extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             done: false
         };

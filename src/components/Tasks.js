@@ -9,7 +9,7 @@ import Ring from './Loader/Ring';
 import styles from '../styles/Tasks.module.scss';
 
 /**
- * Represents students bar.
+ * Represents students tasks.
  *
  * @class
  */
@@ -20,6 +20,10 @@ class Tasks extends React.Component {
             tasks: [],
             isFetching: true
         };
+    }
+
+    shouldComponentUpdate(nextProps) {
+        return nextProps.tasks !== this.state.tasks ? true : false;
     }
 
     componentDidMount() {
