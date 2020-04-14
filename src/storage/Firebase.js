@@ -3,7 +3,6 @@ import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/performance';
 import 'firebase/analytics';
-import 'firebase/messaging';
 
 firebase.initializeApp({
     apiKey: 'AIzaSyBto1cuKtwUZONzQ4PBt7zTpvqWkgep8aQ',
@@ -21,10 +20,5 @@ const db = firebase.firestore();
 const auth = firebase.auth();
 const perf = firebase.performance();
 const analytics = firebase.analytics();
-const messaging = firebase.messaging();
 
-messaging.usePublicVapidKey(
-    'BArE0LCwlkWVqQTEuL67pICCGEOvlfxFAS62uakcLEfMhYljvGL8ZG2mxNUIvoRg7vGHV8SzLmTVveY534WHaRs'
-);
-
-export { base, db, auth, perf, analytics, messaging };
+export { base, db, auth, perf, analytics };
