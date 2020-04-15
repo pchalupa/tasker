@@ -32,7 +32,7 @@ class AddTask extends React.Component {
         querySnapshot.forEach((doc) => {
             users.push({
                 id: doc.id,
-                name: `${doc.data().name.first} ${doc.data().name.last}`,
+                name: `${ doc.data().name.first } ${ doc.data().name.last }`,
                 assign: true
             });
         });
@@ -117,10 +117,10 @@ class AddTask extends React.Component {
 
     render() {
         return (
-            <form className={styles.container} onSubmit={this.handleSubmit}>
-                <label>
-                    <p>Předmět:</p>
-                    <input
+	<form className={styles.container} onSubmit={this.handleSubmit}>
+		<label>
+			<p>Předmět:</p>
+			<input
                         name="subject"
                         type="text"
                         placeholder="Předmět"
@@ -128,21 +128,21 @@ class AddTask extends React.Component {
                         onChange={this.handleInputChange}
                         required
                     />
-                </label>
-                <label>
-                    <p>Štítky:</p>
-                    <input
+		</label>
+		<label>
+			<p>Štítky:</p>
+			<input
                         name="tags"
                         type="text"
                         placeholder="test, zápis, ..."
                         value={this.state.tags}
                         onChange={this.handleInputChange}
                     />
-                </label>
-                <label>Přiřazení:</label>
-                <div className={styles.assign}>
-                    {this.state.users.map((user) => (
-                        <button
+		</label>
+		<label>Přiřazení:</label>
+		<div className={styles.assign}>
+			{this.state.users.map((user) => (
+				<button
                             type="button"
                             name={user.id}
                             className={styles.user}
@@ -150,17 +150,17 @@ class AddTask extends React.Component {
                             onClick={this.handleSetAssign}
                             key={user.id}
                         >
-                            {user.name}
-                        </button>
+					{user.name}
+				</button>
                     ))}
-                </div>
-                <label>
-                    <p>Popis:</p>
-                    {this.state.editor}
-                    <div id="wysiwyg-editor" className={styles.editor}></div>
-                </label>
-                <input type="submit" value="Odeslat" />
-            </form>
+		</div>
+		<label>
+			<p>Popis:</p>
+			{this.state.editor}
+			<div id="wysiwyg-editor" className={styles.editor}></div>
+		</label>
+		<input type="submit" value="Odeslat" />
+	</form>
         );
     }
 }

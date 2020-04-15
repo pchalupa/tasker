@@ -41,10 +41,10 @@ class Login extends React.Component {
 
     render() {
         return (
-            <form className={styles.container} onSubmit={this.handleSubmit}>
-                <label>
-                    <p>E-mail:</p>
-                    <input
+	<form className={styles.container} onSubmit={this.handleSubmit}>
+		<label>
+			<p>E-mail:</p>
+			<input
                         name="email"
                         type="text"
                         placeholder="E-mail"
@@ -52,19 +52,19 @@ class Login extends React.Component {
                         onChange={this.handleInputChange}
                         required
                     />
-                </label>
-                <label>
-                    <p>Heslo:</p>
-                    <input
+		</label>
+		<label>
+			<p>Heslo:</p>
+			<input
                         name="password"
                         type="password"
                         placeholder="Heslo"
                         value={this.state.tags}
                         onChange={this.handleInputChange}
                     />
-                </label>
-                <input type="submit" value="Odeslat" />
-            </form>
+		</label>
+		<input type="submit" value="Odeslat" />
+	</form>
         );
     }
 }
