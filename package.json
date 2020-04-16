@@ -15,7 +15,7 @@
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
-		"deploy": "react-scripts build && firebase deploy",
+		"deploy": "npm run lint && react-scripts build && firebase deploy",
 		"lint": "eslint -c .eslintrc.json src/*.js",
 		"lint:fix": "eslint -c .eslintrc.json src/*.js --fix"
 	},
