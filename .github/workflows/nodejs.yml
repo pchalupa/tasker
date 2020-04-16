@@ -10,7 +10,7 @@ on:
         branches: [master]
 
 jobs:
-    static analysis:
+    static-analysis:
         runs-on: ubuntu-latest
 
         strategy:
