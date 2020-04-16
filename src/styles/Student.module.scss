@@ -1,28 +1,28 @@
-@import './global/Animations.scss';
-@import './global/Colors.scss';
-@import './global/Tools.scss';
+@import './Global/Animations.scss';
+@import './Global/Colors.scss';
+@import './Global/Tools.scss';
 
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2vmax;
-    transition: 150ms ease-in;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 2vmax;
+	transition: 150ms ease-in;
 
-    @include fade-in;
+	@include fade-in;
 
-    &:hover {
-        background-color: $cw;
-        transition: 150ms ease-in;
-        transform: scale(1.1);
+	&:hover {
+		background-color: $cw;
+		transition: 150ms ease-in;
+		transform: scale(1.1);
 
-        @include border-radius;
-        @include drop-shadow;
-    }
+		@include border-radius;
+		@include drop-shadow;
+	}
 
-    .title {
-        color: $cb;
-        font-size: 1.5vmax;
-    }
+	.title {
+		color: $cb;
+		font-size: 1.5vmax;
+	}
 }

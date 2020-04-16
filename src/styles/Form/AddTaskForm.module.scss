@@ -1,92 +1,92 @@
-@import '../global/Tools.scss';
-@import '../global/Colors.scss';
+@import '../Global/Tools.scss';
+@import '../Global/Colors.scss';
 
 .container {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-    label {
-        display: flex;
-        flex-direction: column;
-        margin: 1vmax 0;
-    }
+	label {
+		display: flex;
+		flex-direction: column;
+		margin: 1vmax 0;
+	}
 
-    input {
-        padding: 1vmax;
-        font-size: 1.5vmax;
-        border: 0;
+	input {
+		padding: 1vmax;
+		font-size: 1.5vmax;
+		border: 0;
 
-        @include border-radius;
-    }
+		@include border-radius;
+	}
 
-    input[type='text'] {
-        height: 3vh;
-    }
+	input[type='text'] {
+		height: 3vh;
+	}
 
-    input[type='submit'] {
-        cursor: pointer;
-        color: $cprimary;
-    }
+	input[type='submit'] {
+		cursor: pointer;
+		color: $cprimary;
+	}
 
-    .assign {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-        grid-gap: 1vmax;
-        align-items: center;
+	.assign {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+		grid-gap: 1vmax;
+		align-items: center;
 
-        button {
-            height: 5vh;
-            font-size: 1.5vh;
-            background-color: $cw;
-            color: $cb;
-            border: 0;
-            transition: 150ms ease-in;
-            @include border-radius;
+		button {
+			height: 5vh;
+			font-size: 1.5vh;
+			background-color: $cw;
+			color: $cb;
+			border: 0;
+			transition: 150ms ease-in;
+			@include border-radius;
 
-            &#selected {
-                background-color: $cprimary;
-                color: $cw;
-                transition: 150ms ease-out;
-            }
-        }
-    }
+			&#selected {
+				background-color: $cprimary;
+				color: $cw;
+				transition: 150ms ease-out;
+			}
+		}
+	}
 
-    .editor {
-        display: grid;
-        grid-template-rows: 5vh 1fr;
-        padding: 1vmax;
-        font-size: 1.5vmax;
-        border: 0;
-        background-color: $cw;
+	.editor {
+		display: grid;
+		grid-template-rows: 5vh 1fr;
+		padding: 1vmax;
+		font-size: 1.5vmax;
+		border: 0;
+		background-color: $cw;
 
-        @include border-radius;
+		@include border-radius;
 
-        .actionbar {
-            display: flex;
-            justify-content: space-between;
-            width: 50vw;
-            height: 4vh;
+		.actionbar {
+			display: flex;
+			justify-content: space-between;
+			width: 50vw;
+			height: 4vh;
 
-            .button {
-                width: 5vw;
-                background-color: $cw;
-                border: 1px solid rgba($cb, 0.15);
+			.button {
+				width: 5vw;
+				background-color: $cw;
+				border: 1px solid rgba($cb, 0.15);
 
-                @include border-radius;
-            }
+				@include border-radius;
+			}
 
-            .selected {
-                color: $cprimary;
-            }
-        }
+			.selected {
+				color: $cprimary;
+			}
+		}
 
-        .content {
-            height: 35vh;
-            border: 1px solid rgba($cb, 0.15);
-            outline: 0px solid transparent;
-            padding: 2vmax;
+		.content {
+			height: 35vh;
+			border: 1px solid rgba($cb, 0.15);
+			outline: 0px solid transparent;
+			padding: 2vmax;
 
-            @include border-radius;
-        }
-    }
+			@include border-radius;
+		}
+	}
 }
