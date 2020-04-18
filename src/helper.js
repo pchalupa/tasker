@@ -9,11 +9,16 @@
  */
 export function getWeekDates(past = 0) {
 	const current = new Date();
-	current.setHours(0, 0, 0, 0);
-	const start = current.getDate() - (current.getDay() === 0 ? 6 : current.getDay() - 1);
-	const end = start + 6;
+	const dateStart = current.getDate() - (current.getDay() === 0 ? 6 : current.getDay() - 1);
+	const dateEnd = dateStart + 6;
+	const start = new Date();
+	start.setHours(0, 0, 0, 0);
+	start.setDate(dateStart - 7 * past);
+	const end = new Date();
+	end.setHours(0, 0, 0, 0);
+	end.setDate(dateEnd - 7 * past);
 	return {
-		start: new Date(current.setDate(start - 7 * past)),
-		end: new Date(current.setDate(end - 7 * past)),
+		start: start,
+		end: new Date(end),
 	};
 }
