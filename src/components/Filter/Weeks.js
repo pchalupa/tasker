@@ -3,6 +3,7 @@
  */
 
 import React, { createRef } from 'react';
+import { getWeekDates } from '../../helper';
 import PropTypes from 'prop-types';
 import styles from '../../styles/Filter/Weeks.module.scss';
 
@@ -13,12 +14,11 @@ class Weeks extends React.Component {
 	constructor() {
 		super();
 		this.state = { selected: '' };
-		this.currentWeek = createRef();
-		this.previosWeek = createRef();
+		this.currentWeekRef = createRef();
 	}
 
 	componentDidMount() {
-		this.setState({ selected: this.currentWeek.current });
+		this.setState({ selected: this.currentWeekRef.current });
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -29,33 +29,32 @@ class Weeks extends React.Component {
 	}
 
 	render() {
-		return (
-			<div className={styles.container}>
+		const buttons = [];
+		for (var i = 0; i < 3; i++) {
+			const weekDates = getWeekDates(i);
+			buttons.push(
 				<button
 					onClick={(event) => {
 						this.setState({ selected: event.target });
 						this.props.timePeriod({
-							start: new Date(2020, 3, 13, 0, 0, 0),
-							end: new Date(2020, 3, 19, 0, 0, 0),
+							start: weekDates.start,
+							end: weekDates.end,
 						});
 					}}
-					id={styles.selected}
-					ref={this.currentWeek}>
-					Tento týden
+					id={i === 0 ? styles.selected : ''}
+					ref={i === 0 ? this.currentWeekRef : null}
+					key={i}>
+					{i === 0
+						? 'Tento týden'
+						: i === 1
+						? 'Minulý týden'
+						: `${weekDates.start.getDate()}.${
+								weekDates.start.getMonth() + 1
+						  }. - ${weekDates.end.getDate()}.${weekDates.end.getMonth() + 1}.`}
 				</button>
-				<button
-					onClick={(event) => {
-						this.setState({ selected: event.target });
-						this.props.timePeriod({
-							start: new Date(2020, 3, 6, 0, 0, 0),
-							end: new Date(2020, 3, 12, 0, 0, 0),
-						});
-					}}
-					ref={this.previousWeek}>
-					Minulý týden
-				</button>
-			</div>
-		);
+			);
+		}
+		return <div className={styles.container}>{buttons}</div>;
 	}
 }
 

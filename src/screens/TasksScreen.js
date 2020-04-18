@@ -6,7 +6,7 @@ import React from 'react';
 import Tasks from '../components/Tasks';
 import Header from '../components/Image/Header';
 import Weeks from '../components/Filter/Weeks';
-import getCurrentWeek from '../tools/Helper';
+import { getWeekDates } from '../helper';
 import PropTypes from 'prop-types';
 import styles from '../styles/Screen/Screen.module.scss';
 import image from '../assets/img/header.svg';
@@ -17,7 +17,7 @@ import image from '../assets/img/header.svg';
 class TasksScreen extends React.Component {
 	constructor() {
 		super();
-		this.state = { timePeriod: getCurrentWeek() };
+		this.state = { timePeriod: getWeekDates() };
 	}
 	componentDidMount() {
 		if (
