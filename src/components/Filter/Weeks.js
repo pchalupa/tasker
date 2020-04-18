@@ -48,7 +48,7 @@ class Weeks extends React.Component {
 						? 'Tento týden'
 						: i === 1
 						? 'Minulý týden'
-						: `${weekDates.start.getDate()}.${
+						: `Týden: ${weekDates.start.getDate()}.${
 								weekDates.start.getMonth() + 1
 						  }. - ${weekDates.end.getDate()}.${weekDates.end.getMonth() + 1}.`}
 				</button>
