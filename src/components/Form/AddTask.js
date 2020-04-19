@@ -17,7 +17,7 @@ class AddTask extends React.Component {
 			subject: '',
 			description: '',
 			tags: '',
-			currentWeek: getWeekDates(),
+			timePeriod: '',
 		};
 	}
 
@@ -61,6 +61,7 @@ class AddTask extends React.Component {
 		this.setState({
 			[name]: name === 'tags' ? value.split(',') : value,
 		});
+		console.log(this.state);
 	};
 
 	handleSetAssign = (event) => {
@@ -84,8 +85,12 @@ class AddTask extends React.Component {
 		});
 		db.collection(process.env.NODE_ENV === 'production' ? 'tasks' : 'tasks_dev').add({
 			date: {
-				start: base.firestore.Timestamp.fromDate(this.state.currentWeek.start),
-				end: base.firestore.Timestamp.fromDate(this.state.currentWeek.end),
+				start: base.firestore.Timestamp.fromDate(
+					this.state.timePeriod === 'this' ? getWeekDates().start : getWeekDates(1).start
+				),
+				end: base.firestore.Timestamp.fromDate(
+					this.state.timePeriod === 'this' ? getWeekDates().end : getWeekDates(1).end
+				),
 			},
 			detail: {
 				subject: this.state.subject,
@@ -101,7 +106,7 @@ class AddTask extends React.Component {
 	render() {
 		return (
 			<form className={styles.container} onSubmit={this.handleSubmit}>
-				<label>
+				<label id={styles.subject}>
 					<p>Předmět:</p>
 					<input
 						name="subject"
@@ -112,7 +117,7 @@ class AddTask extends React.Component {
 						required
 					/>
 				</label>
-				<label>
+				<label id={styles.tags}>
 					<p>Štítky:</p>
 					<input
 						name="tags"
@@ -121,6 +126,13 @@ class AddTask extends React.Component {
 						value={this.state.tags}
 						onChange={this.handleInputChange}
 					/>
+				</label>
+				<label>
+					<p>Úkol na:</p>
+					<select name="timePeriod" value={this.state.timePeriod} onChange={this.handleInputChange}>
+						<option value="this">Tento týden</option>
+						<option value="next">Příští týden</option>
+					</select>
 				</label>
 				<label>Přiřazení:</label>
 				<div className={styles.assign}>
