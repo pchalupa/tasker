@@ -13,10 +13,10 @@ export function getWeekDates(past = 0) {
 	const dateEnd = dateStart + 6;
 	const start = new Date();
 	start.setHours(0, 0, 0, 0);
-	start.setDate(dateStart - 7 * past);
+	start.setDate(dateStart + 7 * past);
 	const end = new Date();
 	end.setHours(0, 0, 0, 0);
-	end.setDate(dateEnd - 7 * past);
+	end.setDate(dateEnd + 7 * past);
 	return {
 		start: start,
 		end: new Date(end),
