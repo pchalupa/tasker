@@ -31,7 +31,7 @@ class Weeks extends React.Component {
 	render() {
 		const buttons = [];
 		for (var i = 0; i < 3; i++) {
-			const weekDates = getWeekDates(i);
+			const weekDates = getWeekDates(-i);
 			buttons.push(
 				<button
 					onClick={(event) => {
@@ -48,7 +48,7 @@ class Weeks extends React.Component {
 						? 'Tento týden'
 						: i === 1
 						? 'Minulý týden'
-						: `Týden: ${weekDates.start.getDate()}.${
+						: `${weekDates.start.getDate()}.${
 								weekDates.start.getMonth() + 1
 						  }. - ${weekDates.end.getDate()}.${weekDates.end.getMonth() + 1}.`}
 				</button>
