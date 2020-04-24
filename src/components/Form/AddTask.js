@@ -17,7 +17,7 @@ class AddTask extends React.Component {
 			subject: '',
 			description: '',
 			tags: '',
-			timePeriod: '',
+			timePeriod: 'this',
 		};
 	}
 
