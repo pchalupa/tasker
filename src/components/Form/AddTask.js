@@ -127,7 +127,7 @@ class AddTask extends React.Component {
 						onChange={this.handleInputChange}
 					/>
 				</label>
-				<label>
+				<label id={styles.timePeriod}>
 					<p>Úkol na:</p>
 					<select name="timePeriod" value={this.state.timePeriod} onChange={this.handleInputChange}>
 						<option value="this">Tento týden</option>
