@@ -4,7 +4,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from '../styles/Tags.module.scss';
+import styles from './Tags.module.scss';
 
 function Tags(props) {
 	return (

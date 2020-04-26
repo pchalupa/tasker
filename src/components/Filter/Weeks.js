@@ -5,7 +5,7 @@
 import React, { createRef } from 'react';
 import { getWeekDates } from '../../helper';
 import PropTypes from 'prop-types';
-import styles from '../../styles/Filter/Weeks.module.scss';
+import styles from './Weeks.module.scss';
 
 /**
  *	Represents weeks filter.

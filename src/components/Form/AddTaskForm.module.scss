@@ -1,5 +1,5 @@
-@import '../Global/Tools.scss';
-@import '../Global/Colors.scss';
+@import '../../styles/Tools.scss';
+@import '../../styles/Colors.scss';
 
 .container {
 	display: grid;
@@ -55,7 +55,7 @@
 		cursor: pointer;
 		color: $cprimary;
 		grid-column-start: 1;
-		grid-column-end: 3;
+		grid-column-end: 4;
 	}
 
 	.assign {

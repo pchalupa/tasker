@@ -1,0 +1,14 @@
+@import '../../styles/Colors.scss';
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0.75vmax 0;
+
+	.tag {
+		font-size: 1.25vh;
+		font-style: italic;
+		color: rgba($cb, 0.75);
+		padding-right: 0.5vmax;
+	}
+}

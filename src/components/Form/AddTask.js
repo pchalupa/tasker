@@ -7,7 +7,7 @@ import pell from 'pell';
 import { base, db } from '../../storage/Firebase';
 import 'firebase/firestore';
 import { getWeekDates } from '../../helper';
-import styles from '../../styles/Form/AddTaskForm.module.scss';
+import styles from './AddTaskForm.module.scss';
 
 class AddTask extends React.Component {
 	constructor(props) {

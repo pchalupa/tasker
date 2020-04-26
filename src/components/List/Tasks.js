@@ -3,11 +3,13 @@
  */
 
 import React from 'react';
-import { db } from '../storage/Firebase';
-import Task from './Task';
-import Ring from './Loader/Ring';
+import { db } from '../../storage/Firebase';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import styles from '../styles/Tasks.module.scss';
+import Task from './Task';
+import Ring from '../Loader/Ring';
+import { ROUTES } from '../../constants/routes';
+import styles from './Tasks.module.scss';
 
 /**
  * Represents students tasks.
@@ -70,7 +72,7 @@ class Tasks extends React.Component {
 	render() {
 		return this.state.isFetching ? (
 			<Ring />
-		) : (
+		) : this.state.tasks.length > 0 ? (
 			<div className={styles.container}>
 				{this.state.tasks.map((task, index) => (
 					<Task
@@ -85,6 +87,8 @@ class Tasks extends React.Component {
 					/>
 				))}
 			</div>
+		) : (
+			<Redirect to={ROUTES.ROOT} />
 		);
 	}
 }

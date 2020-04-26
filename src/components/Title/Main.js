@@ -4,7 +4,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from '../../styles/TitleMain.module.scss';
+import styles from './TitleMain.module.scss';
 
 function Main(props) {
 	return <div className={styles.container}>{props.content}</div>;

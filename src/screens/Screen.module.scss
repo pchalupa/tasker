@@ -1,0 +1,17 @@
+@import '../styles/Colors.scss';
+@import '../styles/Fonts.scss';
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	background-color: $cbg;
+
+	@include fp;
+}
+
+.layout {
+	display: flex;
+	flex-direction: column;
+	padding: 0 5vmax 5vmax 5vmax;
+}

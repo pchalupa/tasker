@@ -3,10 +3,10 @@
  */
 
 import React from 'react';
-import { base, db, analytics } from '../storage/Firebase';
+import { base, db, analytics } from '../../storage/Firebase';
 import Tags from './Tags';
 import PropTypes from 'prop-types';
-import styles from '../styles/Task.module.scss';
+import styles from './Task.module.scss';
 
 /**
  * Represents task.

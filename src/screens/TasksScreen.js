@@ -3,31 +3,21 @@
  */
 
 import React from 'react';
-import Tasks from '../components/Tasks';
+import PropTypes from 'prop-types';
+import Tasks from '../components/List/Tasks';
 import Header from '../components/Image/Header';
 import Weeks from '../components/Filter/Weeks';
 import { getWeekDates } from '../helper';
-import PropTypes from 'prop-types';
-import styles from '../styles/Screen/Screen.module.scss';
+import styles from './Screen.module.scss';
 import image from '../assets/img/header.svg';
 
 /**
  * Function displays Tasker screen.
  */
 class TasksScreen extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = { timePeriod: getWeekDates() };
-	}
-	componentDidMount() {
-		if (
-			!(
-				this.props.location.state ||
-				(localStorage.getItem('userId') && localStorage.getItem('userId') !== 'undefined')
-			)
-		) {
-			this.props.history.push('/');
-		}
 	}
 
 	handleTimePeriodChange = (timePeriod) => {
@@ -35,21 +25,19 @@ class TasksScreen extends React.Component {
 	};
 
 	render() {
-		return this.props.location.state ? (
+		return (
 			<div className={styles.layout}>
-				<Header source={image} alt="" student={this.props.location.state.studentAlias} />
+				<Header image={image} alt="Header" text={this.props.location.state.alias} />
 				<Weeks timePeriod={this.handleTimePeriodChange} />
-				<Tasks userId={this.props.location.state.studentId} timePeriod={this.state.timePeriod} />
+				<Tasks userId={this.props.location.state.id} timePeriod={this.state.timePeriod} />
 			</div>
-		) : (
-			<></>
 		);
 	}
 }
 
 TasksScreen.propTypes = {
 	location: PropTypes.any,
-	history: PropTypes.any,
+	match: PropTypes.object,
 };
 
 export default TasksScreen;
